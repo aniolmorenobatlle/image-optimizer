@@ -1,18 +1,33 @@
 .vscode/
+node_modules/
 
-node_modules
-
-# Ignore everything inside input
+# Ignore input contents
 input/*
 
-# Keep example image
+# Re-allow folders
+!input/images/
+!input/videos/
+
+# Ignore contents again
+input/images/*
+input/videos/*
+
+# Keep example folders
 !input/images/example/
 !input/videos/example/
 
-# Ignore everything inside output
+# Ignore output contents
 output/*
 
-# Keep example output folder
+# Re-allow folders
+!output/images/
+!output/videos/
+
+# Ignore contents again
+output/images/*
+output/videos/*
+
+# Keep example folders
 !output/images/example/
 !output/videos/example/
 
