@@ -1,43 +1,68 @@
-# Image Optimizer
+# Media Optimizer
 
-A simple image optimization tool built with Node.js and Sharp.
+A lightweight media optimization toolkit built with Node.js, Sharp, and FFmpeg.
 
 This project automatically:
-- resizes images
-- converts them to WebP
-- converts them to AVIF
-- preserves folder structure
-- generates multiple responsive sizes
 
-Designed for static websites, Laravel projects, SEO optimization, and performance improvements.
+* resizes images
+* converts images to WebP
+* converts images to AVIF
+* converts GIFs to WebM
+* converts GIFs to MP4
+* preserves folder structure
+* generates responsive assets
+* creates output directories automatically
 
----
-
-## Features
-
-- Recursive folder processing
-- WebP generation
-- AVIF generation
-- Multiple responsive sizes
-- Automatic directory creation
-- Preserves input folder structure
-- Simple and dependency-light
+Designed for static websites, Laravel projects, SEO optimization, and performance-focused workflows.
 
 ---
 
-## Project Structure
+# Features
+
+## Image Optimization
+
+* Recursive folder processing
+* WebP generation
+* AVIF generation
+* Multiple responsive sizes
+* Automatic directory creation
+* Preserves input folder structure
+
+## GIF Optimization
+
+* GIF → WebM conversion
+* GIF → MP4 conversion
+* Optimized video output
+* Fast-start MP4 support
+* Preserves folder structure
+
+---
+
+# Project Structure
 
 ```text
-image-optimizer/
+media-optimizer/
 │
 ├── input/
-│   └── example.jpg
+│   ├── images/
+│   │   └── example/
+│   │
+│   └── videos/
+│       └── example/
 │
 ├── output/
-│   └── example/
+│   ├── images/
+│   │   ├── webp/
+│   │   └── avif/
+│   │
+│   └── videos/
+│       ├── webm/
+│       └── mp4/
 │
 ├── scripts/
-│   └── optimize.js
+│   ├── optimize-images.js
+│   ├── optimize-gifs.js
+│   └── helper.js
 │
 ├── package.json
 ├── README.md
@@ -46,19 +71,20 @@ image-optimizer/
 
 ---
 
-## Requirements
+# Requirements
 
-- Node.js 18+
-- npm
+* Node.js 18+
+* npm
+* FFmpeg
 
 ---
 
-## Installation
+# Installation
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/aniolmorenobatlle/image-optimizer.git
+git clone https://github.com/aniolmorenobatlle/media-optimizer.git
 ```
 
 Install dependencies:
@@ -69,59 +95,116 @@ npm install
 
 ---
 
-## Usage
+# FFmpeg Installation
 
-Place your images inside:
+Required for GIF video conversion.
 
-```text
-input/
-```
-
-Then run:
+## macOS
 
 ```bash
-npm run optimize
+brew install ffmpeg
 ```
 
-Optimized images will be generated inside:
+## Ubuntu / Debian
+
+```bash
+sudo apt install ffmpeg
+```
+
+## Windows
+
+Download FFmpeg from:
+
+https://ffmpeg.org/download.html
+
+---
+
+# Usage
+
+## Optimize Images
+
+Place images inside:
 
 ```text
-output/
+input/images/
+```
+
+Run:
+
+```bash
+npm run optimize:images
+```
+
+Generated files:
+
+```text
+output/images/
 ```
 
 ---
 
-## Supported Input Formats
+## Optimize GIFs
 
-Currently supported:
-- JPG
-- JPEG
-- PNG
-- WebP
-- AVIF
+Place GIF files inside:
+
+```text
+input/videos/
+```
+
+Run:
+
+```bash
+npm run optimize:gifs
+```
+
+Generated files:
+
+```text
+output/videos/
+```
 
 ---
 
-## Generated Formats
+# Supported Image Formats
 
-The optimizer generates:
-- WebP
-- AVIF
+Input formats:
 
-For each configured responsive size.
+* JPG
+* JPEG
+* PNG
+* WebP
+* AVIF
+
+Generated formats:
+
+* WebP
+* AVIF
 
 ---
 
-## Default Sizes
+# Supported Video Formats
+
+Input formats:
+
+* GIF
+
+Generated formats:
+
+* WebM
+* MP4
+
+---
+
+# Default Responsive Sizes
 
 ```js
 const sizes = [640, 1280, 1920];
 ```
 
-Example output:
+Example image output:
 
 ```text
-output/
+output/images/
 ├── webp/
 │   └── hero-1280.webp
 │
@@ -129,23 +212,44 @@ output/
     └── hero-1280.avif
 ```
 
----
+Example video output:
 
-## Performance Benefits
-
-Using optimized next-gen formats can significantly reduce:
-- page weight
-- bandwidth usage
-- LCP
-- loading times
-
-Especially useful for:
-- PageSpeed Insights
-- Core Web Vitals
-- SEO optimization
+```text
+output/videos/
+├── webm/
+│   └── animation.webm
+│
+└── mp4/
+    └── animation.mp4
+```
 
 ---
 
-## Dependencies
+# Performance Benefits
 
-- Sharp
+Using optimized next-generation formats can significantly reduce:
+
+* page weight
+* bandwidth usage
+* loading times
+* Largest Contentful Paint (LCP)
+
+Useful for:
+
+* Core Web Vitals
+* PageSpeed Insights
+* SEO optimization
+* static websites
+* modern frontend workflows
+
+---
+
+# Dependencies
+
+## Images
+
+* Sharp
+
+## Video
+
+* FFmpeg
