@@ -1,6 +1,6 @@
 import sharp from "sharp";
 import fs from "fs/promises";
-import path from "path";
+import path, { relative } from "path";
 
 const INPUT_DIR = "./input";
 const OUTPUT_DIR = "./output";
@@ -9,19 +9,24 @@ const sizes = [640, 1280, 1920];
 
 async function processImage(filePath, relativePath) {
 
+    if (relativePath.split(path.sep)[0] === "example") return;
+
     const ext = path.extname(filePath);
     const fileName = path.basename(filePath, ext);
 
-    const webpOutputDir = path.join(
+    const baseOutputDir = path.join(
         OUTPUT_DIR,
-        "webp",
         path.dirname(relativePath)
     );
 
+    const webpOutputDir = path.join(
+        baseOutputDir,
+        "webp",
+    );
+
     const avifOutputDir = path.join(
-        OUTPUT_DIR,
+        baseOutputDir,
         "avif",
-        path.dirname(relativePath)
     );
 
     await fs.mkdir(webpOutputDir, { 

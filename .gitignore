@@ -6,7 +6,7 @@ node_modules
 input/*
 
 # Keep example image
-!input/example.jpg
+!input/example/
 
 # Ignore everything inside output
 output/*
