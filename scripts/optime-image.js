@@ -1,6 +1,6 @@
 import sharp from "sharp";
 import fs from "fs/promises";
-import path, { relative } from "path";
+import path from "path";
 
 const INPUT_DIR = "./input";
 const OUTPUT_DIR = "./output";
@@ -11,7 +11,7 @@ async function processImage(filePath, relativePath) {
 
     if (relativePath.split(path.sep)[0] === "example") return;
 
-    const ext = path.extname(filePath);
+    const ext      = path.extname(filePath);
     const fileName = path.basename(filePath, ext);
 
     const baseOutputDir = path.join(

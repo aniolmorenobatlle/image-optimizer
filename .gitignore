@@ -6,13 +6,15 @@ node_modules
 input/*
 
 # Keep example image
-!input/example/
+!input/images/example/
+!input/videos/example/
 
 # Ignore everything inside output
 output/*
 
 # Keep example output folder
-!output/example/
+!output/images/example/
+!output/videos/example/
 
 # macOS
 .DS_Store

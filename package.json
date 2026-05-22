@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "optimize": "node scripts/optime.js"
+    "optimize-images": "node scripts/optime-image.js",
+    "optimize-videos": "node scripts/optime-video.js"
   },
   "keywords": [],
   "author": "",
