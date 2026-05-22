@@ -58,7 +58,7 @@ image-optimizer/
 Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/aniolmorenobatlle/image-optimizer.git
 ```
 
 Install dependencies:
