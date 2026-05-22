@@ -1,0 +1,18 @@
+.vscode/
+
+node_modules
+
+# Ignore everything inside input
+input/*
+
+# Keep example image
+!input/example.jpg
+
+# Ignore everything inside output
+output/*
+
+# Keep example output folder
+!output/example/
+
+# macOS
+.DS_Store
