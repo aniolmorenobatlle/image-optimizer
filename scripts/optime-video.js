@@ -8,6 +8,8 @@ const OUTPUT_DIR = "./output";
 
 async function processGif(filePath, relativePath) {
 
+    if (relativePath.split(path.sep)[0] === "example") return;
+
     const ext      = path.extname(filePath);
     const fileName = path.basename(filePath, ext);
 
